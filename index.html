@@ -60,21 +60,95 @@
   <div class="row mb-5">
     <div class="col-sm-4">
       Red
-      <input class="form-control" type="number" min="0" max="255" value="255">
+      <input class="form-control red" type="number" min="0" max="255" value="255">
     </div>
     <div class="col-sm-4">
       Blue
-      <input class="form-control" type="number" min="0" max="255" value="255">
+      <input class="form-control green" type="number" min="0" max="255" value="255">
     </div>
     <div class="col-sm-4">
       Green
-      <input class="form-control" type="number" min="0" max="255" value="255">
+      <input class="form-control blue" type="number" min="0" max="255" value="255">
     </div>
   </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script>
-  // Add your code here!
+  
+  //console log "blah-blah" when the DOM is ready
+
+  $(function() {
+    console.log("Let's get ready to party with JQuery")
+  });
+
+  // remove the last paragraph in the article
+
+  let $article = $("article")
+  let $lastParagraphInArticle = $("article p:last-child");
+
+  $lastParagraphInArticle.hide();
+
+  // give the images in the article the class of "image-center"
+
+  let $imagesInArticle = $("article img");
+  $imagesInArticle.addClass("image-center");
+
+  // set font size of title to be random from 0 to 100
+
+  let $title = $("h1#title");
+
+  let randomNumber = Math.floor(Math.random() * 101);
+
+  $title.css("font-size", randomNumber)
+
+  // add an item to the list
+
+  let $list = $("ol");
+
+  let $listItem = $("<li>")
+  $listItem.text("hello")
+
+  $list.append($listItem);
+
+  // remove the list and replace with a paragraph
+
+  let $aside = $("aside.col-sm-4")
+  let $paragraph = $("<paragraph>")
+  $paragraph.text("sorry for the list being here. they are stupid :(")
+
+  $aside.empty();
+  $aside.append($paragraph);
+
+  // change the color of the body to represent the color of the three numbers at bottom
+
+  let $body = $("body");
+
+  let $inputs = $("input.form-control");
+  $inputs.on("change", function() {
+  
+  let $red = $("input.red").val()
+  let $green = $("input.green").val()
+  let $blue = $("input.blue").val()
+  
+  console.log("WORKED!", $red, $green, $blue)
+
+  $body.css("background-color", `rgb(${$red},${$green},${$blue})`);
+  });
+
+  
+
+  // $body.css("background-color", `rgb(200,100,50)`);
+
+  // remove the image with a click
+
+  $dogImage = $("img");
+
+  $dogImage.on("click", function() {
+    $dogImage.hide()
+  });
+
+
+
 </script>
 </body>
 
