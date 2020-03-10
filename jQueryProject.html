@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: deepskyblue;
+        }
+
+        input {
+            width: 400px;
+            margin: 20px;
+            height: 35px;
+            font-size: 35px;
+        }
+
+        label {
+            font-size: 35px;
+        }
+
+        div {
+            font-size: 30px;
+        }
+
+        button{
+            width: 50px;
+            height: 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <label for="title">Enter Title:</label>
+    <input class="title" type="text">
+    <br>
+    <label for="rating">Enter Rating:</label>
+    <input class="rating" type="text">
+    <br>
+    <button>submit</button>
+
+    <ul>
+
+    </ul>
+
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+
+        let $button = $("button");
+
+        $button.on("click", function() {
+
+           let $title = $("input.title").val();
+           let $rating = $("input.rating").val();
+
+           if ($rating > 10) $rating = 10;
+           if ($rating < 0) $rating = 0;
+
+           if ($title.length < 2) return;
+
+           let $list = $("ul");
+
+           let $newDiv = $("<div>");
+
+           let $remButton = $("<button>");
+
+            $remButton.addClass("remove").text("X").css("background-color", "red");
+
+            $newDiv.append(`${$title} ${$rating} `, $remButton);
+
+            $list.append($newDiv);
+
+        })
+
+        $("ul").on("click", ".remove", function(evt) {
+  (evt.target).parentElement.remove();
+});
+
+    </script>
+</body>
+</html>
